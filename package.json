@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "inquirer": "^8.2.0",
+    "jest": "^27.4.4"
+  },
+  "name": "programming-project-10",
+  "description": "",
+  "version": "1.0.0",
+  "main": "script.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seth20smith/Programming-Challenge-10.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seth20smith/Programming-Challenge-10/issues"
+  },
+  "homepage": "https://github.com/seth20smith/Programming-Challenge-10#readme"
+}
