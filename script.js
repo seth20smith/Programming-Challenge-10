@@ -1,9 +1,12 @@
 const inquirer = require('inquirer')
 const fs = require('fs');
 const Manager = require('./lib/manager');
+const Intern = require('./lib/intern');
+const Engineer = require('./lib/engineer');
 let employeeArray = []
 let cards = ``
 addEmployee()
+
 function makeManager() {
     inquirer.prompt([
         {
@@ -34,7 +37,66 @@ function makeManager() {
     })
 
 }
+function makeEngineer() {
+    inquirer.prompt([
+        {
 
+            message: 'What is your name?',
+            name: 'name',
+            type: 'input',
+        },
+        {
+            message: 'What is your Employee ID?',
+            name: 'id',
+            type: 'input',
+        },
+        {
+            message: 'What is your email?',
+            name: 'email',
+            type: 'input',
+        },
+        {
+            message: 'What is your Github User Name?',
+            name: 'Github',
+            type: 'input',
+        }
+    ]).then(info => {
+        let engineer = new Engineer(info.name, info.id, info.email, info.github)
+        employeeArray.push(engineer)
+        anotherEmp()
+    })
+
+}
+function makeIntern() {
+    inquirer.prompt([
+        {
+
+            message: 'What is your name?',
+            name: 'name',
+            type: 'input',
+        },
+        {
+            message: 'What is your Employee ID?',
+            name: 'id',
+            type: 'input',
+        },
+        {
+            message: 'What is your email?',
+            name: 'email',
+            type: 'input',
+        },
+        {
+            message: 'What School do you attend?',
+            name: 'school',
+            type: 'input',
+        }
+    ]).then(info => {
+        let intern = new Intern(info.name, info.id, info.email, info.school)
+        employeeArray.push(intern)
+        anotherEmp()
+    })
+
+}
 function addEmployee() {
     inquirer.prompt({
         message: 'what is your Role?',
@@ -48,12 +110,11 @@ function addEmployee() {
                 makeManager()
                 break;
             case "Engineer":
-
+                makeEngineer()
                 break;
             case "Intern":
-
+                makeIntern()
                 break;
-
 
         }
     })
@@ -95,7 +156,8 @@ function writeHtml() {
         </ul>
     </div>`
                 break;
-            case "Engineer":
+        
+        case "Engineer":
                 // engineer card
                 cards += `<div class="card-header">
                 <h2 class="card-title">${employeeArray[i].getName()}</h2>
@@ -106,12 +168,12 @@ function writeHtml() {
                 <ul class="list-group">
                     <li class="list-group-item">ID: ${employeeArray[i].getId()}</li>
                     <li class="list-group-item">Email: <a href="mailto:${employeeArray[i].getEmail()}">${employeeArray[i].getEmail()}</a></li>
-                    <li class="list-group-item">Office number: ${employeeArray[i].getgithub()}</li>
+                    <li class="list-group-item">Office number: ${employeeArray[i].getGitHub()}</li>
                 </ul>
             </div>`
                 break;
 
-            case "Intern":
+        case "Intern":
                 // intern card
 
                 cards += `<div class="card-header">
@@ -123,7 +185,7 @@ function writeHtml() {
         <ul class="list-group">
             <li class="list-group-item">ID: ${employeeArray[i].getId()}</li>
             <li class="list-group-item">Email: <a href="mailto:${employeeArray[i].getEmail()}">${employeeArray[i].getEmail()}</a></li>
-            <li class="list-group-item">Office number: ${employeeArray[i].getschool()}</li>
+            <li class="list-group-item">Office number: ${employeeArray[i].getSchool()}</li>
         </ul>
     </div>`
                 break;
@@ -140,7 +202,7 @@ function writeHtml() {
         <title>My Team</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="dist/style.css">
         <script src="https://kit.fontawesome.com/c502137733.js"></script>
     </head>
 
